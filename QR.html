@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مولد QR</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        body {
+          background-color:#4682B4;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            direction: rtl;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        #qrcode {
+            margin-top: 20px;
+        }
+        .ho{
+          border-radius:20px;
+        }
+        .hj{
+          color:#FFFAFA;
+        }
+    </style>
+</head>
+<body>
+
+    <h2 class="hj">توليد رموز QR</h2>
+    
+    <input type="text" id="dataInput" placeholder="أدخل الرابط، النص، الصورة، الفيديو...">
+    <button class="ho" onclick="generateQR()">إنشاء رمز QR</button>
+    
+    <div id="qrcode"></div>
+
+    <script>
+        function generateQR() {
+            let data = document.getElementById("dataInput").value;
+            let qrCodeContainer = document.getElementById("qrcode");
+            
+            
+            qrCodeContainer.innerHTML = "";
+            
+            if (data.trim() === "") {
+                alert("يرجى إدخال بيانات لإنشاء رمز QR");
+                return;
+            }
+
+            
+            new QRCode(qrCodeContainer, {
+                text: data,
+                width: 250,
+                height: 250,
+            });
+        }
+    </script>
+
+</body>
+</html>
